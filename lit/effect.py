@@ -56,7 +56,6 @@ class EffectInstance:
             self.controller.set_pixels(self.static_pixels)
             self.next_upd_time += 1 / DEFAULT_SPEED
 
-
     def __str__(self):
         return str(
             {

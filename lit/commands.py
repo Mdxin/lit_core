@@ -127,6 +127,7 @@ class commands:
                 start_time = time.time()
                 try:
                     with self.show_lock:
+                        self.sleep_event.clear()
                         for effect in self.effects_by_id.values():
                             updates = 0
                             while (
@@ -155,6 +156,7 @@ class commands:
                         self.controller_manager.show()
                     if next_upd_time == float("inf"):
                         logger.debug("No effects updated")
+                        self.sleep_event.wait(0.05)
                         continue
 
                     wait_time = next_upd_time - time.time()
